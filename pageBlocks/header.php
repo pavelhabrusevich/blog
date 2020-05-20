@@ -1,4 +1,5 @@
 <!--header-->
+<?php require "db.php";?>
 <!doctype html>
 <html lang="en">
 
@@ -34,8 +35,7 @@
             <a class="p-2 text-muted" href="#">Коля</a>
             <a class="p-2 text-muted" href="#">Выбары</a>
             <a class="p-2 text-muted" href="#">Психоз (covid-19)</a>
-            <a class="p-2 text-muted" href="#">Маи друзья</a>
-            <a class="p-2 text-muted" href="#">Маи враги</a>
+            <a class="p-2 text-muted" href="#">Маи врахи</a>
             <a class="p-2 text-muted" href="#">Элехтарат</a>
         </nav>
     </div>
