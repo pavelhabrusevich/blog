@@ -1,5 +1,6 @@
 <!--header-->
-<?php require "db.php";?>
+<?php require "db.php";
+?>
 <!doctype html>
 <html lang="en">
 
@@ -20,7 +21,7 @@
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-6 offset-3 text-center">
-                <a class="blog-header-logo text-dark" href="#">The Луканомика</a>
+                <a class="blog-header-logo text-dark" href="/blog/">The Луканомика</a>
             </div>
             <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
                 <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
@@ -31,10 +32,10 @@
     <!--categories-->
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-            <a class="p-2 text-muted" href="#">Я любимый</a>
-            <a class="p-2 text-muted" href="#">Выбары</a>
-            <a class="p-2 text-muted" href="#">Психоз (covid-19)</a>
-            <a class="p-2 text-muted" href="#">Маи врахи</a>
+            <?php $categories = get_all_categories();
+            foreach ($categories as $category):?>
+            <a class="p-2 text-muted" href="/blog/category.php?id_category=<?php echo $category["id"];?>"><?php echo $category["category_name"]?></a>
+            <?php endforeach;?>
         </nav>
     </div>
 <div/>

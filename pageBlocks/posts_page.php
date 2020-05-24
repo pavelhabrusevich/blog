@@ -2,7 +2,7 @@
 <?php
 $post = get_post($_GET['id']);
 $date = $post["date"];
-$category = get_category($post["id_category"])
+$category = get_category_data($post["id_category"], "category_name")
 ?>
 <div class="align-content-around">
     <img src="<?php echo $post["img"];?>" class="rounded float-left m-3" alt="i-am-lovely" width="250" height="250">
