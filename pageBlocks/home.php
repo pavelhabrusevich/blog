@@ -1,6 +1,11 @@
 <!--home page-->
 <?php
-$posts = get_all_posts();
+$page = isset($_GET["page"]) ? $_GET["page"] : 1;
+$limit = 3;
+$offset = $limit*($page-1);
+$posts = get_limit_posts($limit, $offset);
+$postsQty = get_posts_qty();
+$pagesQty = ceil($postsQty/$limit);
 foreach ($posts as $post):
     $date = $post["date"];
     $categoryName = get_category_data($post["id_category"], "category_name");
@@ -24,8 +29,8 @@ foreach ($posts as $post):
         <a href="/blog/post.php?id=<?php echo $post["id"];?>" target="_blank">Continue reading</a>
     </div>
 </div>
-<?php endforeach; ?>
-<nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">Older</a>
-    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+<?php endforeach;?>
+<nav class="blog">
+    <a class="btn btn-outline-primary" href="/blog/?page=<?php previousPage();?>">Назад</a>
+    <a class="btn btn-outline-primary" href="/blog/?page=<?php nextPage();?>">Далее</a>
 </nav>

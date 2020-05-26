@@ -1,8 +1,8 @@
 <?php require "pageBlocks/header.php";?>
     <div class="container">
-        <div class="row py-4">
+        <div class="row">
             <div class="col-md-9">
-                <?php require "pageBlocks/posts_page.php"?>
+                <?php require "pageBlocks/post_page.php"?>
             </div>
             <div class="col-md-3 blog-sidebar">
                 <?php require "pageBlocks/sidebar.php"?>
