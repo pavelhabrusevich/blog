@@ -19,11 +19,12 @@
         </ol>
     </div>
     <div class="p-4">
-        <h4 class="font-italic">Elsewhere</h4>
+        <h4 class="font-italic">Я вам брошу ссылочку:</h4>
         <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+            <?php $sources = get_sources();
+            foreach ($sources as $source): ?>
+            <li><a href="<?php echo $source["source_link"]?>" target="_blank"><?php echo $source["source_name"]?></a></li>
+            <?php endforeach;?>
         </ol>
     </div>
 </aside>

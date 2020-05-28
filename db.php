@@ -61,3 +61,9 @@ function get_category_posts($id_category){
     $categoryPosts = mysqli_query ($dbconnection, "SELECT id FROM posts WHERE id_category = $id_category");
     return $categoryPosts;
 }
+//Ссылки на ресурсы
+function get_sources(){
+    global $dbconnection;
+    $sources = mysqli_query($dbconnection, "SELECT * FROM other_sources");
+    return$sources;
+}
