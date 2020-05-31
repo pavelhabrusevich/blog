@@ -67,3 +67,23 @@ function get_sources(){
     $sources = mysqli_query($dbconnection, "SELECT * FROM other_sources");
     return$sources;
 }
+// Поиск по блоку
+function search(){
+    global $dbconnection;
+    $postId = "";
+    $postTitle = "";
+    if (isset($_POST['submit']) && !empty($_POST['search'])) {
+        $search = $_POST['search'];
+        $query = mysqli_query($dbconnection, "SELECT * FROM posts WHERE title LIKE '%$search%' OR text LIKE '%$search%'");
+        $queryQty = mysqli_num_rows($query);
+        if ($queryQty == 0) {
+            echo "Не найдено '" . $search . "'";
+        } else {
+            while ($data = mysqli_fetch_array($query)) {
+                $postId = $data['id'];
+                $postTitle = $data['title'];
+                echo '<pre><a href="/blog/post.php?id=' . $postId . '" target="_blank">' . mb_strimwidth($postTitle, 0, 25, "..") . '</a></pre>';
+            }
+        }
+    }
+}

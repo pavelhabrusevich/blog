@@ -1,6 +1,15 @@
 <!--sidebar-->
+<?php //require "db.php"?>
 <aside>
-    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <form method="post">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="submit" name="submit">Искать</button>
+            </div>
+            <input type="text" class="form-control" aria-label="" aria-describedby="basic-addon1" name="search" required>
+        </div>
+    </form>
+    <?php $searchResult = search();?>
     <div class="p-4">
         <h4 class="font-italic">Archives</h4>
         <ol class="list-unstyled mb-0">
