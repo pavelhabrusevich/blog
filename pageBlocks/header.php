@@ -25,7 +25,12 @@ require "functions.php";
                 <a class="blog-header-logo text-dark" href="/blog/">The Луканомика</a>
             </div>
             <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
-                <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                <nav class="blog">
+                    <a class="btn btn-outline-primary" href="#">LogIn</a>
+                    <a class="btn btn-outline-primary" href="/blog/registration.php">Reg</a>
+                </nav>
+<!--                <a class="btn btn-outline-primary" href="#">Sign up</a>-->
+<!--                <a class="btn btn-outline-primary" href="#">Registration</a>-->
             </div>
         </div>
     </header>

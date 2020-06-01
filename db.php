@@ -18,7 +18,7 @@ function get_limit_posts($limit, $offset){
     global $dbconnection;
     $limit = mysqli_real_escape_string($dbconnection, $limit);
     $offset = mysqli_real_escape_string($dbconnection, $offset);
-    $posts = mysqli_query($dbconnection,"SELECT * FROM posts LIMIT $limit OFFSET $offset");
+    $posts = mysqli_query($dbconnection,"SELECT * FROM posts ORDER BY DATE DESC LIMIT $limit OFFSET $offset");
     return $posts;
 }
 // Количество постов
@@ -29,7 +29,6 @@ function get_posts_qty(){
         return $qty["COUNT(id)"];
     }
 }
-
 // Пост
 function get_post($id){
     global $dbconnection;
@@ -70,9 +69,7 @@ function get_sources(){
 // Поиск по блоку
 function search(){
     global $dbconnection;
-    $postId = "";
-    $postTitle = "";
-    if (isset($_POST['submit']) && !empty($_POST['search'])) {
+    if (isset($_POST['submit']) && !empty($_POST['search']) && $_POST['search'] !== ' ') {
         $search = $_POST['search'];
         $query = mysqli_query($dbconnection, "SELECT * FROM posts WHERE title LIKE '%$search%' OR text LIKE '%$search%'");
         $queryQty = mysqli_num_rows($query);
