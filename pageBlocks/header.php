@@ -26,7 +26,11 @@ require "functions.php";
             </div>
             <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
                 <nav class="blog">
-                    <a class="btn btn-outline-primary" href="#">LogIn</a>
+                    <?php if (!isset($_COOKIE['lukaCookie'])):?>
+                    <a class="btn btn-outline-primary" href="/blog/login.php">LogIn</a>
+                    <?php else:?>
+                        <a class="btn btn-outline-primary" href="/blog/login.php">LogOut</a>
+                    <?php endif;?>
                     <a class="btn btn-outline-primary" href="/blog/registration.php">Reg</a>
                 </nav>
 <!--                <a class="btn btn-outline-primary" href="#">Sign up</a>-->
