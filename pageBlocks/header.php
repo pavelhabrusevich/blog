@@ -7,8 +7,9 @@ require "functions.php";
 
 <head>
     <meta charset="utf-8">
-    <title>First blog</title>
+    <title>The Луканомика</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/blog.css">
     <link rel="stylesheet" href="css/main.css">
@@ -24,17 +25,23 @@ require "functions.php";
             <div class="col-6 offset-3 text-center">
                 <a class="blog-header-logo text-dark" href="/blog/">The Луканомика</a>
             </div>
-            <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
+            <div class="col-3 d-flex justify-content-end align-items-center">
                 <nav class="blog">
-                    <?php if (!isset($_COOKIE['lukaCookie'])):?>
-                    <a class="btn btn-outline-primary" href="/blog/login.php">LogIn</a>
-                    <?php else:?>
-                        <a class="btn btn-outline-primary" href="/blog/login.php">LogOut</a>
-                    <?php endif;?>
-                    <a class="btn btn-outline-primary" href="/blog/registration.php">Reg</a>
+                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+                        <?php if (!isset($_COOKIE['lukaCookie'])): ?>
+                            <a class="btn btn-outline-primary" href="/blog/login.php">LogIn</a>
+                            <a class="btn btn-outline-secondary" href="/blog/registration.php">SignUp</a>
+                        <?php else: ?>
+                            <a>Привет <?= $_COOKIE['lukaCookie'] ?></a>
+                            <?php if (isset($_POST["logout"])) {
+                                global $userData;
+                                setcookie('lukaCookie', $userData['name'], time() -600, "/");
+                                header('Location: /blog');
+                            } ?>
+                            <button type="submit" class="btn btn-outline-secondary" name="logout">LogOut</button>
+                        <?php endif; ?>
+                    </form>
                 </nav>
-<!--                <a class="btn btn-outline-primary" href="#">Sign up</a>-->
-<!--                <a class="btn btn-outline-primary" href="#">Registration</a>-->
             </div>
         </div>
     </header>
