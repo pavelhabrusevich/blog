@@ -51,8 +51,9 @@ require "functions.php";
         <nav class="nav d-flex justify-content-between">
             <?php $categories = get_all_categories();
             foreach ($categories as $category):?>
-            <a class="p-2 text-muted" href="/blog/category.php?id_category=<?php echo $category["id"];?>"><?php echo $category["category_name"]?></a>
-            <?php endforeach;?>
+                <a class="p-2 text-muted"
+                   href="/blog/category.php?id_category=<?php echo $category["id"]; ?>"><?php echo $category["category_name"] ?></a>
+            <?php endforeach; ?>
         </nav>
     </div>
-<div/>
+    <div/>
