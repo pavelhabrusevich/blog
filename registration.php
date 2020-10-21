@@ -1,4 +1,11 @@
-<?php require "db.php"; ?>
+<?php require "db.php";
+require __DIR__ . '/vendor/autoload.php';
+session_start();
+use Gregwar\Captcha\CaptchaBuilder;
+use Gregwar\Captcha\PhraseBuilder;
+$phraseBuilder = new PhraseBuilder(5, '0123456789');
+$captcha = new CaptchaBuilder(null, $phraseBuilder);
+?>
 <head>
     <meta charset="utf-8">
     <title>The Луканомика</title>
@@ -19,14 +26,13 @@
                 <input type="text" class="form-control" name="email" placeholder="Email *" value="<?php echo @$_POST["email"]; ?>" required/>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="pass" placeholder="Your Password *" value="<?php echo @$_POST["pass"]; ?>" required/>
+                <input type="password" class="form-control" name="pass" placeholder="Your Password *" required/>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="pass_2" placeholder="Confirm Password *" required/>
             </div>
-            <button type="submit" class="btn btn-outline-secondary" name="registration">Submit</button>
-            <div class="col-6 offset-3 text-center text-danger p-2">
-                <?php if (isset($_POST["registration"])) {
+            <div class="form-group">
+                <?php if (isset($_POST["registration"]) && $_SESSION['captcha'] == $_POST['captcha']) {
                     $name = filter_var(trim($_POST["name"]), FILTER_SANITIZE_STRING);
                     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
                     $pass = filter_var(trim($_POST["pass"]), FILTER_SANITIZE_STRING);
@@ -57,6 +63,15 @@
                     } else echo array_shift($errors);
                 } ?>
             </div>
+            <div class="form-group">
+                <?php
+                $captcha->build();
+                $_SESSION["captcha"] = $captcha->getPhrase();
+                ?>
+                <img src="<?php echo $captcha->inline(); ?>" />
+                <input type="text" class="form-check-inline" name="captcha" placeholder="type text *"/>
+            </div>
+            <button type="submit" class="btn btn-outline-secondary" name="registration">Submit</button>
         </div>
     </form>
 </div>
