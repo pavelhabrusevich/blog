@@ -17,7 +17,7 @@ $captcha = new CaptchaBuilder(null, $phraseBuilder);
     <div class="col-6 offset-3 text-center pb-3">
         <a class="blog-header-logo text-dark" href="/blog/">Рады видеть вас в волшебной стране "The Луканомика</a>
     </div>
-    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
         <div class="col-6 offset-3 text-center">
             <div class="form-group">
                 <input type="text" class="form-control" name="name" placeholder="Your Name *" value="<?php echo @$_POST["name"]; ?>" required/>

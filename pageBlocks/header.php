@@ -27,7 +27,7 @@ require "functions.php";
             </div>
             <div class="col-3 d-flex justify-content-end align-items-center">
                 <nav class="blog">
-                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
                         <?php if (!isset($_COOKIE['lukaCookie'])): ?>
                             <a class="btn btn-outline-primary" href="/blog/login.php">LogIn</a>
                             <a class="btn btn-outline-secondary" href="/blog/registration.php">SignUp</a>

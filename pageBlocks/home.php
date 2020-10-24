@@ -1,7 +1,7 @@
 <!--home page-->
 <?php
 $page = isset($_GET["page"]) ? $_GET["page"] : 1;
-$limit = 3;
+$limit = 5;
 $offset = $limit * ($page - 1);
 $posts = get_limit_posts($limit, $offset);
 $postsQty = get_posts_qty();
